@@ -120,28 +120,28 @@
                     <div class="product-content-right">
                         <div class="product-breadcroumb">
                             <a href="">Home</a>
-                            <a href="">Category Name</a>
-                            <a href="">Sony Smart TV - 2015</a>
+                            <a href="">{{ $product->category_name }}</a>
+                            <a href="">{{ $product->name }}</a>
                         </div>
                         
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="product-images">
                                     <div class="product-main-img">
-                                        <img src="asset/frontend/img/product-2.jpg" alt="">
+                                        <img src="{{ asset('storage/Product_image/'.$product->image) }}" alt="">
                                     </div>
                                     
                                     <div class="product-gallery">
-                                        <img src="asset/frontend/img/product-thumb-1.jpg" alt="">
-                                        <img src="asset/frontend/img/product-thumb-2.jpg" alt="">
-                                        <img src="asset/frontend/img/product-thumb-3.jpg" alt="">
+                                        <img src="{{ asset('storage/Product_image/'.$product->image) }}" alt="">
+                                        <img src="{{ asset('storage/Product_image/'.$product->image) }}" alt="">
+                                        <img src="{{ asset('storage/Product_image/'.$product->image) }}" alt="">
                                     </div>
                                 </div>
                             </div>
                             
                             <div class="col-sm-6">
                                 <div class="product-inner">
-                                    <h2 class="product-name">Sony Smart TV - 2015</h2>
+                                    <h2 class="product-name">{{ $product->name }}</h2>
                                     <div class="product-inner-price">
                                         <ins>$700.00</ins> <del>$100.00</del>
                                     </div>    
@@ -154,7 +154,7 @@
                                     </form>   
                                     
                                     <div class="product-inner-category">
-                                        <p>Category: <a href="">Summer</a>. Tags: <a href="">awesome</a>, <a href="">best</a>, <a href="">sale</a>, <a href="">shoes</a>. </p>
+                                        <p>Category: {{ $product->category_name }} Tags: <a href="">awesome</a>, <a href="">best</a>, <a href="">sale</a>, <a href="">shoes</a>. </p>
                                     </div> 
                                     
                                     <div role="tabpanel">
@@ -165,9 +165,7 @@
                                         <div class="tab-content">
                                             <div role="tabpanel" class="tab-pane fade in active" id="home">
                                                 <h2>Product Description</h2>  
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique, diam in consequat iaculis, est purus iaculis mauris, imperdiet facilisis ante ligula at nulla. Quisque volutpat nulla risus, id maximus ex aliquet ut. Suspendisse potenti. Nulla varius lectus id turpis dignissim porta. Quisque magna arcu, blandit quis felis vehicula, feugiat gravida diam. Nullam nec turpis ligula. Aliquam quis blandit elit, ac sodales nisl. Aliquam eget dolor eget elit malesuada aliquet. In varius lorem lorem, semper bibendum lectus lobortis ac.</p>
-
-                                                <p>Mauris placerat vitae lorem gravida viverra. Mauris in fringilla ex. Nulla facilisi. Etiam scelerisque tincidunt quam facilisis lobortis. In malesuada pulvinar neque a consectetur. Nunc aliquam gravida purus, non malesuada sem accumsan in. Morbi vel sodales libero.</p>
+                                                <p>{{ $product->description }}</p>
                                             </div>
                                             <div role="tabpanel" class="tab-pane fade" id="profile">
                                                 <h2>Reviews</h2>
@@ -238,7 +236,7 @@
                                         </div>
                                     </div>
 
-                                    <h2><a href="">Apple new i phone 6</a></h2>
+                                    <h2><a href="">{{ $product->name }}</a></h2>
 
                                     <div class="product-carousel-price">
                                         <ins>$400.00</ins> <del>$425.00</del>
@@ -246,7 +244,7 @@
                                 </div>
                                 <div class="single-product">
                                     <div class="product-f-image">
-                                        <img src="asset/frontend/img/product-4.jpg" alt="">
+                                        <img src="{{ asset('storage/Product_image/'.$product->image) }}" alt="">
                                         <div class="product-hover">
                                             <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
                                             <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
