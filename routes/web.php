@@ -36,3 +36,5 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('products/trash','Backend\ProductController@trash_index')->name('products.trash.index');
     Route::get('logout','Backend\LogoutController@perform')->name('admin.logout');
 });
+
+Route::get('/','Frontend\HomeController@index')->name('home');
