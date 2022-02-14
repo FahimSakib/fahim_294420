@@ -38,3 +38,5 @@ Route::group(['middleware' => 'auth'], function(){
 });
 
 Route::get('/','Frontend\HomeController@index')->name('home');
+Route::get('single','Frontend\SIngleController@index')->name('single');
+
