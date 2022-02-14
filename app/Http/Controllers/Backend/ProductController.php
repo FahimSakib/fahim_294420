@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -17,13 +16,13 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all()->where('trash','0');
+        $products = Product::all()->where('status','1');
         return view('backend.pages.products.index',compact('products'));
     }
 
     public function trash_index()
     {
-        $products = Product::all()->where('trash','1');
+        $products = Product::all()->where('status','0');
     
         return view('backend.pages.products.trash-index',compact('products'));
     }
@@ -35,9 +34,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = Category::all()->where('trash','0');
 
-        return view('backend.pages.products.create',compact('categories'));
+        return view('backend.pages.products.create');
     }
 
     /**
@@ -49,13 +47,11 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'title'             => 'required',
-            'price'             => 'required|numeric',
-            'old_price'         => 'required|numeric',
-            'short_description' => 'required',
-            'description'       => 'required',
-            'image'             => 'required|mimes:jpg,jpeg,png',
-            'category_id'       => 'required'
+            'name'          => 'required',
+            'category_name' => 'required',
+            'brand_name'    => 'required',
+            'description'   => 'required',
+            'image'         => 'required|mimes:jpg,jpeg,png',
         ]);
         
         $file =  $request->file('image');
@@ -88,9 +84,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $categories = Category::all()->where('trash','0');
 
-        return view('backend.pages.products.edit',compact('product','categories'));
+        return view('backend.pages.products.edit',compact('product'));
     }
 
     /**
@@ -103,13 +98,11 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $data = $request->validate([
-            'title'             => 'required',
-            'price'             => 'required|numeric',
-            'old_price'         => 'required|numeric',
-            'short_description' => 'required',
-            'description'       => 'required',
-            'image'             => 'required',
-            'category_id'       => 'required'
+            'name'          => 'required',
+            'category_name' => 'required',
+            'brand_name'    => 'required',
+            'description'   => 'required',
+            'image'         => 'required',
         ]);
 
         $picture = $this->fileUpload($request->file('image'));
@@ -135,14 +128,14 @@ class ProductController extends Controller
 
     public function trash($id)
     {
-        Product::where('id', $id)->update(['trash' => '1']);
+        Product::where('id', $id)->update(['status' => '0']);
 
-        return redirect()->route('admin.products.index')->with('danger','Item moved to trash');
+        return redirect()->route('admin.products.index')->with('danger','Item moved to deactivated list');
     }
 
     public function restore($id)
     {
-        Product::where('id', $id)->update(['trash' => '0']);
+        Product::where('id', $id)->update(['status' => '1']);
 
         return redirect()->route('admin.products.index')->with('success','Item restored successfully');
     }

@@ -26,28 +26,20 @@
                                 <td>{{ $product->id }}</td>
                             </tr>
                             <tr>
-                                <th>Title</th>
-                                <td>{{ $product->title }}</td>
+                                <th>Name</th>
+                                <td>{{ $product->name }}</td>
                             </tr>
                             <tr>
-                                <th>Price</th>
-                                <td>{{ $product->price}}</td>
+                                <th>Category name</th>
+                                <td>{{ $product->category_name}}</td>
                             </tr>
                             <tr>
-                                <th>Old Price</th>
-                                <td>{{ $product->old_price}}</td>
-                            </tr>
-                            <tr>
-                                <th>Short_description</th>
-                                <td>{{ $product->short_description}}</td>
+                                <th>Brand name</th>
+                                <td>{{ $product->brand_name}}</td>
                             </tr>
                             <tr>
                                 <th>Description</th>
                                 <td>{{ $product->description}}</td>
-                            </tr>
-                            <tr>
-                                <th>Category</th>
-                                <td>{{ $product->category->title}}</td>
                             </tr>
                             <tr>
                                 <th>Image</th>

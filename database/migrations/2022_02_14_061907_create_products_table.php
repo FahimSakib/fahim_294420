@@ -15,7 +15,12 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->
+            $table->string('name');
+            $table->string('category_name');
+            $table->string('brand_name');
+            $table->longText('description');
+            $table->string('image');
+            $table->enum('status',['0','1'])->default('1')->comment="0=not active,1=Active";
             $table->timestamps();
         });
     }

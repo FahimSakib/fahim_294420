@@ -23,7 +23,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function(){
     Route::get('/', 'Backend\DashboardController@index')->name('dashboard');
     Route::resource('products','Backend\ProductController');
     Route::get('products/trash/{id}', 'Backend\ProductController@trash')->name('products.trash');

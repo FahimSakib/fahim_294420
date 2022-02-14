@@ -17,40 +17,30 @@
                         <div class="row mb-3">
                             <div class="col-md-6 mb-3">
                                 <div class="form-floating mb-3 mb-md-0">
-                                    <input class="form-control @error('title') is-invalid @enderror" id="inputTitle"
-                                        name="title" value="{{old('title')}}" type="text" />
-                                    <label for="inputTitle">Title</label>
-                                    @error('title')
+                                    <input class="form-control @error('name') is-invalid @enderror" id="inputName"
+                                        name="name" value="{{old('name')}}" type="text" />
+                                    <label for="inputName">Name</label>
+                                    @error('name')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-floating mb-3 mb-md-0">
-                                    <input class="form-control @error('price') is-invalid @enderror" id="inputPrice"
-                                        name="price" value="{{old('price')}}" type="text" />
-                                    <label for="inputPrice">Price</label>
-                                    @error('price')
+                                    <input class="form-control @error('category_name') is-invalid @enderror" id="inputCategoryName"
+                                        name="category_name" value="{{old('category_name')}}" type="text" />
+                                    <label for="inputCategoryName">Category Name</label>
+                                    @error('category_name')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-floating mb-3 mb-md-0">
-                                    <input class="form-control @error('old_price') is-invalid @enderror"
-                                        id="inputOldPrice" name="old_price" value="{{old('old_price')}}" value="{{old('old_price')}}" type="text" />
-                                    <label for="inputOldPrice">Old Price</label>
-                                    @error('old_price')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <div class="form-floating mb-3 mb-md-0">
-                                    <input class="form-control @error('short_description') is-invalid @enderror"
-                                        id="inputShortDescription" name="short_description" value="{{old('short_description')}}" type="text" />
-                                    <label for="inputShortDescription">ShortDescription</label>
-                                    @error('short_description')
+                                    <input class="form-control @error('brand_name') is-invalid @enderror" id="inputBrandName"
+                                        name="brand_name" value="{{old('brand_name')}}" type="text" />
+                                    <label for="inputBrandName">Brand Name</label>
+                                    @error('brand_name')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -64,25 +54,6 @@
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
-                            </div>
-
-
-                            <div class="col-md-6 mb-3">
-                                <label for="category_id">Category</label>
-                                <select class="form-control @error('category_id') is-invalid @enderror"
-                                    name="category_id" id="category_id">
-                                    <option value="">Select Please</option>
-                                    @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}"
-                                        {{ (old('category_id'))== "$category->id" ? 'selected' : '' }}>
-                                        {{ $category->title }}</option>
-                                    @endforeach
-                                </select>
-                                @error('category_id')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-floating mb-3 mb-md-0">

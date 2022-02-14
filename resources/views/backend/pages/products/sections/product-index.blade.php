@@ -18,7 +18,7 @@
                                 Product</a>
                         </div>
                         <div class="">
-                            <a class="btn btn-warning" href="{{ route('products.trash.index') }}">Trash</a>
+                            <a class="btn btn-warning" href="{{ route('products.trash.index') }}">Deactivated Products</a>
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -35,12 +35,10 @@
                         <thead>
                             <tr>
                                 <th>SL</th>
-                                <th>Title</th>
-                                <th>Price</th>
-                                <th>Old Price</th>
-                                <th>Short Description</th>
+                                <th>Name</th>
+                                <th>Category_name</th>
+                                <th>Brand_name</th>
                                 <th>Description</th>
-                                <th>Category</th>
                                 <th>Image</th>
                                 <th>Action</th>
                             </tr>
@@ -48,12 +46,10 @@
                         <tfoot>
                             <tr>
                                 <th>SL</th>
-                                <th>Title</th>
-                                <th>Price</th>
-                                <th>Old Price</th>
-                                <th>Short Description</th>
+                                <th>Name</th>
+                                <th>Category_name</th>
+                                <th>Brand_name</th>
                                 <th>Description</th>
-                                <th>Category</th>
                                 <th>Image</th>
                                 <th>Action</th>
                             </tr>
@@ -65,12 +61,10 @@
                             @foreach ($products as $item)
                             <tr>
                                 <td>{{ $i++ }}</td>
-                                <td>{{ $item->title }}</td>
-                                <td>{{ $item->price }}</td>
-                                <td>{{ $item->old_price }}</td>
-                                <td>{{ $item->short_description}}</td>
-                                <td>{{ $item->description }}</td>
-                                <td>{{ $item->category->title }}</td>
+                                <td>{{ $item->name }}</td>
+                                <td>{{ $item->category_name }}</td>
+                                <td>{{ $item->brand_name }}</td>
+                                <td>{{ $item->description}}</td>
                                 <td>
                                     <img src=" {{ asset('storage/Product_image/'.$item->image) }}"
                                         style="height:50px;width:60px">
@@ -88,7 +82,7 @@
 
                                         <button type="submit" class="btn btn-outline-danger">Delete</button> --}}
                                         <a class="btn btn-danger"
-                                            href="{{ route('admin.products.trash',$item->id) }}">Trash</a>
+                                            href="{{ route('admin.products.trash',$item->id) }}">Deacivate</a>
                                     </form>
                                 </td>
                             </tr>

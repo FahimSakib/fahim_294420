@@ -29,11 +29,10 @@
                         <thead>
                             <tr>
                                 <th>SL</th>
-                                <th>Title</th>
-                                <th>Price</th>
-                                <th>Short Description</th>
+                                <th>Name</th>
+                                <th>Category_name</th>
+                                <th>Brand_name</th>
                                 <th>Description</th>
-                                <th>Category</th>
                                 <th>Image</th>
                                 <th>Action</th>
                             </tr>
@@ -41,11 +40,10 @@
                         <tfoot>
                             <tr>
                                 <th>SL</th>
-                                <th>Title</th>
-                                <th>Price</th>
-                                <th>Short Description</th>
+                                <th>Name</th>
+                                <th>Category_name</th>
+                                <th>Brand_name</th>
                                 <th>Description</th>
-                                <th>Category</th>
                                 <th>Image</th>
                                 <th>Action</th>
                             </tr>
@@ -57,11 +55,10 @@
                             @foreach ($products as $item)
                             <tr>
                                 <td>{{ $i++ }}</td>
-                                <td>{{ $item->title }}</td>
-                                <td>{{ $item->price }}</td>
-                                <td>{{ $item->short_description}}</td>
-                                <td>{{ $item->description }}</td>
-                                <td>{{ $item->category->title }}</td>
+                                <td>{{ $item->name }}</td>
+                                <td>{{ $item->category_name }}</td>
+                                <td>{{ $item->brand_name }}</td>
+                                <td>{{ $item->description}}</td>
                                 <td>
                                     <img src=" {{ asset('storage/Product_image/'.$item->image) }}"
                                         style="height:50px;width:60px">
@@ -70,7 +67,6 @@
                                     <form action="{{ route('admin.products.destroy',$item->id) }}" method="POST">
                                         <a class="btn btn-success"
                                             href="{{ route('admin.products.restore',$item->id) }}">Restore</a>
-
                                         @csrf
                                         @method('DELETE')
 
