@@ -20,3 +20,19 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
+
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
+    Route::get('/', 'Backend\DashboardController@index')->name('dashboard');
+    Route::resource('products','Backend\ProductController');
+    Route::get('products/trash/{id}', 'Backend\ProductController@trash')->name('products.trash');
+    Route::get('products/restore/{id}', 'Backend\ProductController@restore')->name('products.restore');
+    Route::get('products/trash','Backend\ProductController@trash_index')->name('products.trash.index');
+});
+
+Route::group(['middleware' => 'auth'], function(){
+   
+    Route::get('products/trash','Backend\ProductController@trash_index')->name('products.trash.index');
+    Route::get('logout','Backend\LogoutController@perform')->name('admin.logout');
+});
